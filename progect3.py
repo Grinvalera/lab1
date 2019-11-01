@@ -1,3 +1,6 @@
+from re import *
+import re
+
 def task16(line1, line2):
     if len(line1) > len(line2):
         c = len(line1) - len(line2)
@@ -11,12 +14,10 @@ def task16(line1, line2):
             print(line2)
 
 
-def task55(line1):
-    str = ''
-    for c in line1:
-        if c not in('0', '1', '2', '3', '4', '5', '6', '7', '8', '9'):
-            str = str + c
-    print(str)
+def task55(line):
+    s = re.sub(r'\d', '', line)
+    print(s)
+    return line
 
 
 def task8(line):
@@ -52,17 +53,11 @@ def task3(line):
 
 
 def task47(line):
-    a = len(line)
-    for i in range(1):
-        for _ in range(1):
-            line = line.replace('abc', '')
-            line = line.replace('1234567890', '')
-            print(line)
-        else:
-            return line
+    s = re.sub(r'abc\d', '', line)
+    print(s)
+    return s
 
 
-from re import *
 def task22(address):
     pattern = compile('(^|\s)[-a-z0-9_.]+@([-a-z0-9]+\.)+[a-z]{2,6}(\s|$)')
     is_valid = pattern.match(address)
@@ -89,45 +84,40 @@ def task42(line1):
     b = line1.index(',', a)
     c = line1[a: b:]
     print(c)
-    return line1
+    return c
 
 
 
+if __name__== '__main__':
+    print('task3')
+    task3('Hello oooo iknfo')
 
-print('task3')
-task3('Hello oooo iknfo')
+    print('task16')
+    task16('JavaScript', 'Pascal')
 
-print('task16')
-task16('JavaScript', 'Pascal')
+    print('task29')
+    task29('aaaaaaaaaaaaaaaaaaaaa')
 
-print('task29')
-task29('aaaaaaaaaaaaaaaaaaaaa')
+    print('task42')
+    task42('Hello, people, word')
 
-print('task42')
-task42('Hello, people, word')
+    print('task55')
+    task55('a1b2c3d4')
 
-print('task55')
-task55('a1b2c3d4')
+    print('task8')
+    task8('w12345x')
 
-print('task8')
-task8('w12345x')
+    print('task22')
+    task22('valera.grinevich@gmail.com')
 
-print('task22')
-task22('valera.grinevich@gmail.com')
+    print('task34')
+    task34('sdjgjcvblksjbhvgiauhgrhjgjk')
 
-print('task34')
-task34('sdjgjcvblksjbhvgiauhgrhjgjk')
+    print('task47')
+    task47('hello abc3, how are abc4 you? abc2 please abc return in our world abc6')
 
-print('task47')
-task47('hello abc3, how are abc4 you? abc2 please return in our world abc6')
-
-print('task60')
-task60('Hello word, the weather is good', 'weather' )
-
-
-
-
-
+    print('task60')
+    task60('Hello word, the weather is good', 'word')
 
 
 
